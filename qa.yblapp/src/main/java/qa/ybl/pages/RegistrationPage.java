@@ -125,18 +125,24 @@ public class RegistrationPage extends Base{
 		String result = null;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		log = new Logging();
+		log.Loginfo("DEEVICE ID is: "+DeviceId);
+		log.Loginfo("USER ID is: "+UserId);
 		log.Loginfo("registrationMethod is started");
 		try {
 			WebElement device = driver.findElement(By.id(deviceId));
+			wait.until(ExpectedConditions.visibilityOf(device));
 			WebElement user = driver.findElement(By.id(userId));
+			wait.until(ExpectedConditions.visibilityOf(user));
 			WebElement reg = driver.findElement(By.id(regbutton));
+			wait.until(ExpectedConditions.visibilityOf(reg));
 			try {
 				device.sendKeys(DeviceId);
 				user.sendKeys(UserId);
 				reg.click();
 				//WebElement key = driver.findElement(By.id(KeyGeneration));
-				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(KeyGeneration)))).click();
-				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(DeviceRegistered)))).click();
+				result = driver.findElement(By.id("android:id/message")).getText();
+//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(KeyGeneration)))).click();
+//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(DeviceRegistered)))).click();
 				result = driver.findElement(By.id("android:id/message")).getText();
 			}catch(Exception e) {
 				log.Logerror("RegistrationPage.registration().SendingValues"+"\n"+e);

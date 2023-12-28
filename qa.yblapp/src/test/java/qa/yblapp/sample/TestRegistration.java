@@ -67,8 +67,8 @@ public class TestRegistration extends Base {
 		log.Loginfo("Testing the RegistartionPage is Started");
 		try {
 			reg = new RegistrationPage();
-			result = reg.registration("0750300635", "970");
-			log.Loginfo("Result of the Registrta");
+			result = reg.registration("0750300635", "972");
+			log.Loginfo("Result of the Registration"+"\n"+result);
 		}catch(Exception e) {
 			log.Logerror("TestLaunch.registrationTest()"+"\n"+e);
 		}
