@@ -1,0 +1,74 @@
+package qa.ybl.pages;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import qa.ybl
+
+public class LoginPage extends Base{
+	/*
+	 *This class contains all the information of login page like text fields, buttons.
+	 */
+
+	/*Username
+	 * id = com.atyati.ganaseva.mfi:id/et_Username
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Username']
+	 */
+	
+	/*Passsword
+	 * id = com.atyati.ganaseva.mfi:id/et_Password
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Password']
+	 */
+	
+	/*Login button
+	 * id = com.atyati.ganaseva.mfi:id/Btn_Login
+	 * xpath = //android.widget.Button[@resource-id='com.atyati.ganaseva.mfi:id/Btn_Login']
+	 */
+	public Logging log;
+	final String UsernameField = "com.atyati.ganaseva.mfi:id/et_Username";
+	final String PasswordField = "com.atyati.ganaseva.mfi:id/et_Password";
+	final String LoginButton = "com.atyati.ganaseva.mfi:id/Btn_Login";
+	
+	public LoginPage() {
+		super();
+	}
+	
+	public boolean usernameField() {
+		log = new Logging();
+		Boolean res = false;
+		try {
+			WebElement Username = driver.findElement(By.id(UsernameField));
+			res = Username.isDisplayed();
+		}catch(Exception e) {
+			log.Logerror("LoginPage.usernameField()"+"\n"+e);
+		}
+		return res;
+	}
+	
+	public boolean passwordField() {
+		Boolean res = false;
+		log = new Logging();
+		try {
+			WebElement Password = driver.findElement(By.id(PasswordField));
+			res = Password.isDisplayed();
+		}catch(Exception e) {
+			log.Logerror("LoginPage.passwordField()"+"\n"+e);
+		}
+		return res;
+	}
+	
+	public boolean loginButton() {
+		Boolean res = false;
+		log = new Logging();
+		try {
+			WebElement Logginbutton = driver.findElement(By.id(LoginButton));
+			res = Logginbutton.isDisplayed();
+		}catch(Exception e) {
+			
+		}
+		return res;
+	}
+}

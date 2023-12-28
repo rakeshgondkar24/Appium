@@ -1,0 +1,22 @@
+package qa.yblapp.sample;
+
+import java.net.MalformedURLException;
+
+import org.testng.annotations.*;
+
+import qa.yblapp.base.Base;
+
+public class TestLaunch extends Base {
+	
+	@BeforeTest
+	public void setup() throws MalformedURLException {
+		Initialization();
+	}
+	
+	@Test
+	public void LaunchApp() {
+		
+	}
+	
+
+}

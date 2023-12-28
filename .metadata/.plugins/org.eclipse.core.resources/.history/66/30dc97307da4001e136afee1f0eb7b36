@@ -1,0 +1,29 @@
+package qa.yblapp.sample;
+
+import java.net.MalformedURLException;
+
+import org.testng.annotations.*;
+
+import qa.ybl.pages.RegistrationPage;
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class TestLaunch extends Base {
+	public RegistrationPage reg;
+	public Logging log;
+	
+	@BeforeTest
+	public void setup() throws MalformedURLException {
+		Initialization();
+	}
+	
+	@Test
+	public void deviceIdField() {
+		log = new Logging();
+		reg = new RegistrationPage();
+		boolean val = reg.deviceIDField();
+		log.Loginfo("TestLaunch.deviceIdField result is: "+val);
+	}
+	
+
+}

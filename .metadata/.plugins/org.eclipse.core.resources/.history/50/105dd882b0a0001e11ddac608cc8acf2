@@ -1,0 +1,12 @@
+package qa.yblapp.sample;
+
+import org.testng.annotations.*;
+
+public class TestOne {
+	
+	@BeforeMethod
+	public void setup() {
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package qa.ybl.global;
+
+import java.io.FileInputStream;
+import java.io.File;
+import org.apache.poi.
+
+public class Global {
+	
+	public void getDate(String filepath, String sheetname) {
+		File file = new File(filepath);
+		FileInputStream fs = new FileInputStream(file);
+		XSSFWorkbook wb = new XSSFWorkbook(fs);
+	}
+
+}

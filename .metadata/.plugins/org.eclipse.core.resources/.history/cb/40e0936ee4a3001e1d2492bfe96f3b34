@@ -1,0 +1,27 @@
+package qa.yblapp.sample;
+
+import java.net.MalformedURLException;
+
+import org.testng.annotations.*;
+
+import qa.ybl.pages.RegistrationPage;
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class TestLaunch extends Base {
+	public RegistrationPage reg;
+	public Logging log;
+	
+	@BeforeTest
+	public void setup() throws MalformedURLException {
+		Initialization();
+	}
+	
+	@Test
+	public void LaunchApp() {
+		log = new Logging();
+		reg = new RegistartionPage();
+	}
+	
+
+}

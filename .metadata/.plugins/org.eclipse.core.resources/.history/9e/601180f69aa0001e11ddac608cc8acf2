@@ -1,0 +1,20 @@
+package qa.yblapp.sample;
+
+import org.testng.annotations.*;
+
+import qa.yblapp.base.Base;
+
+public class TestLaunch extends Base {
+	
+	@BeforeTest
+	public void Setup() {
+		Initialization();
+	}
+	
+	@Test
+	public void LaunchApp() {
+		
+	}
+	
+
+}

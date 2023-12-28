@@ -1,0 +1,42 @@
+package qa.ybl.pages;
+
+import qa.yblapp.base.Base;
+
+public class LoginPage extends Base{
+	/*
+	 *This class contains all the information of login page like text fields, buttons.
+	 */
+
+	/*Username
+	 * id = com.atyati.ganaseva.mfi:id/et_Username
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Username']
+	 */
+	
+	/*Passsword
+	 * id = com.atyati.ganaseva.mfi:id/et_Password
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Password']
+	 */
+	
+	/*Login button
+	 * id = com.atyati.ganaseva.mfi:id/Btn_Login
+	 * xpath = //android.widget.Button[@resource-id='com.atyati.ganaseva.mfi:id/Btn_Login']
+	 */
+	final String Username = "com.atyati.ganaseva.mfi:id/et_Username";
+	final String Password = "com.atyati.ganaseva.mfi:id/et_Password";
+	final String LoginButton = "com.atyati.ganaseva.mfi:id/Btn_Login";
+	
+	public LoginPage() {
+		super();
+	}
+	
+	public boolean usernameField() {
+		
+		Boolean res = false;
+		try {
+			
+		}catch(Exception e) {
+			
+		}
+		return res;
+	}
+}
