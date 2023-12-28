@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-27T16:35:53 IST" name="Default suite" finished-at="2023-12-27T16:36:27 IST" duration-ms="33669">
+  <suite started-at="2023-12-28T11:44:29 IST" name="Default suite" finished-at="2023-12-28T11:45:10 IST" duration-ms="41908">
     <groups>
     </groups>
-    <test started-at="2023-12-27T16:35:53 IST" name="Default test" finished-at="2023-12-27T16:36:27 IST" duration-ms="33669">
-      <class name="qa.yblapp.sample.TestLaunch">
-        <test-method is-config="true" signature="setup()[pri:0, instance:qa.yblapp.sample.TestLaunch@6cd24612]" started-at="2023-12-27T16:35:53 IST" name="setup" finished-at="2023-12-27T16:36:26 IST" duration-ms="32866" status="PASS">
+    <test started-at="2023-12-28T11:44:29 IST" name="Default test" finished-at="2023-12-28T11:45:10 IST" duration-ms="41908">
+      <class name="qa.yblapp.sample.TestRegistration">
+        <test-method is-config="true" signature="setup()[pri:0, instance:qa.yblapp.sample.TestRegistration@6cd24612]" started-at="2023-12-28T11:44:29 IST" name="setup" finished-at="2023-12-28T11:45:10 IST" duration-ms="41137" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="deviceIdField()[pri:0, instance:qa.yblapp.sample.TestLaunch@6cd24612]" started-at="2023-12-27T16:36:26 IST" name="deviceIdField" finished-at="2023-12-27T16:36:27 IST" duration-ms="771" status="PASS">
+        <test-method signature="deviceIdField()[pri:0, instance:qa.yblapp.sample.TestRegistration@6cd24612]" started-at="2023-12-28T11:45:10 IST" name="deviceIdField" finished-at="2023-12-28T11:45:10 IST" duration-ms="742" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deviceIdField -->
-      </class> <!-- qa.yblapp.sample.TestLaunch -->
+      </class> <!-- qa.yblapp.sample.TestRegistration -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
