@@ -21,21 +21,23 @@ public class RegistrationPage extends Base{
 	public Logging log;
 	public WebDriverWait wait;
 	
-	protected String deviceId = "com.atyati.ganaseva.mfi:id/et_Registration_DeviceID";
+	protected By deviceId = By.id("com.atyati.ganaseva.mfi:id/et_Registration_DeviceID");
 	
-	protected  String userId = "com.atyati.ganaseva.mfi:id/et_Registration_UserID";
+	protected  By userId = By.id("com.atyati.ganaseva.mfi:id/et_Registration_UserID");
 
-	protected  String regbutton = "com.atyati.ganaseva.mfi:id/bt_Registration_Submit";
+	protected  By regbutton = By.id("com.atyati.ganaseva.mfi:id/bt_Registration_Submit");
 	
-	protected  String KeyGeneration = "android:id/button1";
+	protected By Keyval = By.id("android:id/message");
 	
-	protected  String DeviceRegistered = "android:id/button1";
+	protected  By KeyGeneration = By.id("android:id/button1");
 	
-	protected  String Permission1 = "com.android.permissioncontroller:id/permission_allow_foreground_only_button";
+	protected  By DeviceRegistered = By.id("android:id/button1");
 	
-	protected  String Permission2 = "com.android.permissioncontroller:id/permission_allow_foreground_only_button";
+	protected  By Permission1 = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
 	
-	protected  String Permission3 = "com.android.permissioncontroller:id/permission_allow_button";
+	protected  By Permission2 = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
+	
+	protected  By Permission3 = By.id("com.android.permissioncontroller:id/permission_allow_button");
 	
 	/*key xpath=//android.widget.TextView[@resource-id='android:id/message']
 	id= android:id/message
@@ -70,7 +72,7 @@ public class RegistrationPage extends Base{
 		Boolean val = false;
 		try {
 			log.Loginfo("Getting the Device ID field status");
-			WebElement device = driver.findElement(By.id(deviceId));
+			WebElement device = driver.findElement(deviceId);
 			val = device.isDisplayed();
 			if(val) {
 				val = device.isEnabled();
@@ -89,7 +91,7 @@ public class RegistrationPage extends Base{
 		try {
 			log.Loginfo("Getting the User ID field status");
 //			WebElement user = driver.findElement(By.id("com.atyati.ganaseva.mfi:id/et_Registration_UserID"));
-			WebElement user = driver.findElement(By.id(userId));
+			WebElement user = driver.findElement(userId);
 			val = user.isDisplayed();
 			if(val) {
 				val = user.isEnabled();
@@ -108,7 +110,7 @@ public class RegistrationPage extends Base{
 		try {
 			log.Loginfo("Getting the Register Button status");
 //			WebElement registerbutton = driver.findElement(By.id("com.atyati.ganaseva.mfi:id/bt_Registration_Submit"));
-			WebElement register = driver.findElement(By.id(regbutton));
+			WebElement register = driver.findElement(regbutton);
 			val = register.isDisplayed();
 			if(val) {
 				val = register.isEnabled();
@@ -121,7 +123,8 @@ public class RegistrationPage extends Base{
 		return val;
 	}
 	
-	public String registration(String DeviceId,String UserId) {
+	public String registration(String TestFlag,String DeviceId,String UserId) {
+		String Testflag = TestFlag.toLowerCase();
 		String result = null;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		log = new Logging();
@@ -129,26 +132,54 @@ public class RegistrationPage extends Base{
 		log.Loginfo("USER ID is: "+UserId);
 		log.Loginfo("registrationMethod is started");
 		try {
-			WebElement device = driver.findElement(By.id(deviceId));
-			wait.until(ExpectedConditions.visibilityOf(device));
-			WebElement user = driver.findElement(By.id(userId));
-			wait.until(ExpectedConditions.visibilityOf(user));
-			WebElement reg = driver.findElement(By.id(regbutton));
-			wait.until(ExpectedConditions.visibilityOf(reg));
-			try {
-				device.sendKeys(DeviceId);
-				user.sendKeys(UserId);
-				reg.click();
-				//WebElement key = driver.findElement(By.id(KeyGeneration));
-				result = driver.findElement(By.id("android:id/message")).getText();
-//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(KeyGeneration)))).click();
-//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(DeviceRegistered)))).click();
-				result = driver.findElement(By.id("android:id/message")).getText();
-			}catch(Exception e) {
-				log.Logerror("RegistrationPage.registration().SendingValues"+"\n"+e);
+			if (Testflag=="d") {
+				try {
+					WebElement device = driver.findElement(deviceId);
+					wait.until(ExpectedConditions.visibilityOf(device));
+					WebElement user = driver.findElement(userId);
+					wait.until(ExpectedConditions.visibilityOf(user));
+					WebElement reg = driver.findElement(regbutton);
+					wait.until(ExpectedConditions.visibilityOf(reg));
+					try {
+						device.sendKeys(DeviceId);
+						user.sendKeys(UserId);
+						reg.click();
+						String key = "Your Key is";
+						String res = "Device Registered";
+						//WebElement key = driver.findElement(By.id(KeyGeneration));
+						//				result = driver.findElement(By.id("android:id/message")).getText();
+						//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(KeyGeneration)))).click();
+						//				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id(DeviceRegistered)))).click();
+						result = driver.findElement(Keyval).getText();
+						if (result.contains(key)) {
+							WebElement KeyGenOk = wait
+									.until(ExpectedConditions.elementToBeClickable(driver.findElement(KeyGeneration)));
+							KeyGenOk.click();
+							WebElement Final = wait.until(ExpectedConditions.visibilityOfElementLocated(Keyval));
+							result = Final.getText();
+							if (result.contains(res)) {
+								wait.until(
+										ExpectedConditions.elementToBeClickable(driver.findElement(DeviceRegistered)))
+										.click();
+								wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(Permission1)))
+										.click();
+								wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(Permission2)))
+										.click();
+								wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(Permission3)))
+										.click();
+							}
+						}
+					} catch (Exception e) {
+						log.Logerror("RegistrationPage.registration().SendingValues" + "\n" + e);
+					}
+				} catch (Exception e) {
+					log.Logerror("RegistrationPage.registration()" + "\n" + e);
+				} 
+			}else {
+				result = "Test Skipped";
 			}
-		}catch(Exception e) {
-			log.Logerror("RegistrationPage.registration()"+"\n"+e);
+		} catch (Exception e) {
+			log.Logerror(""+"\n"+e);
 		}
 		return result;
 	}

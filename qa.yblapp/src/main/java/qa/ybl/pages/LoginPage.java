@@ -31,9 +31,9 @@ public class LoginPage extends Base{
 	 */
 	public Logging log;
 	public WebDriverWait wait;
-	protected String UsernameField = "com.atyati.ganaseva.mfi:id/et_Username";
-	protected String PasswordField = "com.atyati.ganaseva.mfi:id/et_Password";
-	protected String LoginButton = "com.atyati.ganaseva.mfi:id/Btn_Login";
+	protected By UsernameField = By.id("com.atyati.ganaseva.mfi:id/et_Username");
+	protected By PasswordField = By.id("com.atyati.ganaseva.mfi:id/et_Password");
+	protected By LoginButton = By.id("com.atyati.ganaseva.mfi:id/Btn_Login");
 	
 	public LoginPage() {
 		super();
@@ -43,7 +43,7 @@ public class LoginPage extends Base{
 		log = new Logging();
 		Boolean res = false;
 		try {
-			WebElement Username = driver.findElement(By.id(UsernameField));
+			WebElement Username = driver.findElement(UsernameField);
 			res = Username.isDisplayed();
 			if(res) {
 				res = Username.isEnabled();
@@ -60,7 +60,7 @@ public class LoginPage extends Base{
 		Boolean res = false;
 		log = new Logging();
 		try {
-			WebElement Password = driver.findElement(By.id(PasswordField));
+			WebElement Password = driver.findElement(PasswordField);
 			res = Password.isDisplayed();
 			if(res) {
 				res = Password.isEnabled();
@@ -77,7 +77,7 @@ public class LoginPage extends Base{
 		Boolean res = false;
 		log = new Logging();
 		try {
-			WebElement Logginbutton = driver.findElement(By.id(LoginButton));
+			WebElement Logginbutton = driver.findElement(LoginButton);
 			res = Logginbutton.isDisplayed();
 			if(res) {
 				res = Logginbutton.isEnabled();
@@ -99,9 +99,9 @@ public class LoginPage extends Base{
 			if(lp.usernameField()) {
 				if(lp.passwordField()) {
 					if(lp.loginButton()) {
-						WebElement username = driver.findElement(By.id(UsernameField));
-						WebElement password = driver.findElement(By.id(PasswordField));
-						WebElement loginbutton = driver.findElement(By.id(LoginButton));
+						WebElement username = driver.findElement(UsernameField);
+						WebElement password = driver.findElement(PasswordField);
+						WebElement loginbutton = driver.findElement(LoginButton);
 						username.sendKeys(Username);
 						password.sendKeys(Password);
 						loginbutton.click();

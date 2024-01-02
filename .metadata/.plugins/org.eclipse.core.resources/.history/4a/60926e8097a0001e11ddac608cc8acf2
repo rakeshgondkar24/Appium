@@ -1,5 +1,0 @@
-package qa.yblapp.sample;
-
-public abstract class TestLaunch {
-
-}
