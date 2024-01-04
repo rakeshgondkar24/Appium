@@ -1,0 +1,16 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.support.PageFactory;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+
+public class HomePage extends Base {
+	
+	
+	public HomePage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+
+}

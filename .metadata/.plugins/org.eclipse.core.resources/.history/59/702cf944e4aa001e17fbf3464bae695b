@@ -1,0 +1,57 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+
+public class HomePage extends Base {
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[1]")
+	private WebElement QDE;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[2]")
+	private WebElement CenterAndGroup;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[3]")
+	private WebElement CBReport;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[4]")
+	private WebElement CCRCBReport;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[5]")
+	private WebElement Disbursal;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[6]")
+	private WebElement Collection;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[7]")
+	private WebElement OverdueCollection;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[8]")
+	private WebElement CGT;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[9]")
+	private WebElement GRT;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[10]")
+	private WebElement MIS;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[11]")
+	private WebElement CBReject;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[12]")
+	private WebElement Settings;
+	
+	public HomePage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+
+	public Boolean checkQde() {
+		
+	}
+}

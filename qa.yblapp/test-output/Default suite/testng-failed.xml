@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="qa.yblapp.sample.TestRegistration">
+      <class name="qa.yblapp.sample.TestLogin">
         <methods>
-          <include name="registrationTest"/>
-          <include name="setup"/>
+          <include name="homePage"/>
+          <include name="Setup"/>
         </methods>
-      </class> <!-- qa.yblapp.sample.TestRegistration -->
+      </class> <!-- qa.yblapp.sample.TestLogin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

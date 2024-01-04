@@ -87,7 +87,7 @@ public class Base {
 //  		return driver;
 //	}
 	
-	public void Initialization() throws MalformedURLException {
+	public void InitializationForRegisteration() throws MalformedURLException {
 		log = new Logging();
 		String main = prop.getProperty("mainjs");
 		String ip = prop.getProperty("ip");
@@ -121,8 +121,47 @@ public class Base {
   			driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")).click();
   			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
   		}catch(Exception e) {
-  			log.Logerror(""+e);
+  			log.Logerror("Base.InitializationForRegisteration()"+e);
   		}
+	}
+	
+	public void InitializationForLogin() throws MalformedURLException {
+		log = new Logging();
+		String main = prop.getProperty("mainjs");
+		String ip = prop.getProperty("ip");
+		String url = prop.getProperty("url");
+		String App = prop.getProperty("app");
+		String deviceName = prop.getProperty("devicename");
+		log.Loginfo("MAINJS path is: "+"\n"+main);
+		log.Loginfo("IP Address is: "+"\n"+ip);
+		log.Loginfo("url is: "+"\n"+url);
+		log.Loginfo("App path is: "+"\n"+App);
+		log.Loginfo("Device name is: "+"\n"+deviceName);
+		AppiumDriverLocalService service = new AppiumServiceBuilder()
+  				.withAppiumJS(new File(main))
+  				.withIPAddress(ip)
+  				.usingPort(4732)
+  				.withTimeout(Duration.ofMillis(50000))
+  				.build();
+  		service.start();
+  		log.Loginfo("Services Started-----------");
+  		
+  		log.Loginfo("Getting into UiAutomator2Options");
+  		UiAutomator2Options options = new UiAutomator2Options();
+  		options.setDeviceName(deviceName);
+  		options.setCapability("noReset", true);
+  		log.Loginfo("Getting DeviceName");
+  		options.setApp(App);
+  		log.Loginfo("Seeting the App");
+  		//Android Driver
+  		driver = new AndroidDriver(new URL(url), options);
+  		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+//  		try {
+//  			driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")).click();
+//  			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+//  		}catch(Exception e) {
+//  			log.Logerror("Base.InitializationForLogin()"+e);
+//  		}
 	}
 
 }
