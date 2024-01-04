@@ -22,7 +22,7 @@ public class TestRegistration extends Base {
 	@BeforeTest
 	public void setup() throws MalformedURLException {
 		//driver = Initialization();
-		Initialization();
+		InitializationForRegisteration();
 	}
 	
 	@DataProvider

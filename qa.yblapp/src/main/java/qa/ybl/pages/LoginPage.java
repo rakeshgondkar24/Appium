@@ -7,14 +7,18 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+/*
+ *This class contains all the information of login page like text fields, buttons.
+ */
 
 public class LoginPage extends Base{
-	/*
-	 *This class contains all the information of login page like text fields, buttons.
-	 */
-
 	/*Username
 	 * id = com.atyati.ganaseva.mfi:id/et_Username
 	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Username']
@@ -29,24 +33,54 @@ public class LoginPage extends Base{
 	 * id = com.atyati.ganaseva.mfi:id/Btn_Login
 	 * xpath = //android.widget.Button[@resource-id='com.atyati.ganaseva.mfi:id/Btn_Login']
 	 */
+	/*Invalid username/password
+	 * id = android:id/message
+	 * xpath = //android.widget.TextView[@resource-id="android:id/message"]
+	 * ok button
+	 * id = android:id/button1
+	 * xpath = //android.widget.Button[@resource-id="android:id/button1"]
+	 */
 	public Logging log;
 	public WebDriverWait wait;
-	protected By UsernameField = By.id("com.atyati.ganaseva.mfi:id/et_Username");
-	protected By PasswordField = By.id("com.atyati.ganaseva.mfi:id/et_Password");
-	protected By LoginButton = By.id("com.atyati.ganaseva.mfi:id/Btn_Login");
+//	protected By UsernameField = By.id("com.atyati.ganaseva.mfi:id/et_Username");
+//	protected By PasswordField = By.id("com.atyati.ganaseva.mfi:id/et_Password");
+//	protected By LoginButton = By.id("com.atyati.ganaseva.mfi:id/Btn_Login");
+	
+	@AndroidFindBy(id="com.atyati.ganaseva.mfi:id/et_Username")
+	private WebElement UsernameField;
+	
+	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/et_Password")
+	private WebElement PasswordField;
+	
+	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/Btn_Login")
+	private WebElement LoginButton;
+	
+	@AndroidFindBy(id = "android:id/message")
+	private WebElement popUpMessage;
+	
+	@AndroidFindBy(id = "android:id/button1")
+	private WebElement popUpAccept;
 	
 	public LoginPage() {
 		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 	
 	public boolean usernameField() {
 		log = new Logging();
 		Boolean res = false;
 		try {
-			WebElement Username = driver.findElement(UsernameField);
-			res = Username.isDisplayed();
+//			WebElement Username = driver.findElement(UsernameField);
+			res = UsernameField.isDisplayed();
 			if(res) {
-				res = Username.isEnabled();
+				log.Loginfo("Username filed is displayed");
+				res = UsernameField.isEnabled();
+				if(res) {
+					log.Loginfo("Username filed is Enabled");
+				}else {
+					log.Loginfo("Username filed is not Enabled");
+					res = false;
+				}
 			}else {
 				res = false;
 			}
@@ -60,10 +94,17 @@ public class LoginPage extends Base{
 		Boolean res = false;
 		log = new Logging();
 		try {
-			WebElement Password = driver.findElement(PasswordField);
-			res = Password.isDisplayed();
+//			WebElement Password = driver.findElement(PasswordField);
+			res = PasswordField.isDisplayed();
 			if(res) {
-				res = Password.isEnabled();
+				log.Loginfo("Password filed is displayed");
+				res = PasswordField.isEnabled();
+				if(res) {
+					log.Loginfo("Password filed is Enabled");
+				}else {
+					log.Loginfo("Password filed is not Enabled");
+					res = false;
+				}
 			}else {
 				res = false;
 			}
@@ -77,10 +118,17 @@ public class LoginPage extends Base{
 		Boolean res = false;
 		log = new Logging();
 		try {
-			WebElement Logginbutton = driver.findElement(LoginButton);
-			res = Logginbutton.isDisplayed();
+//			WebElement Logginbutton = driver.findElement(LoginButton);
+			res = LoginButton.isDisplayed();
 			if(res) {
-				res = Logginbutton.isEnabled();
+				log.Loginfo("Login button is displayed");
+				res = LoginButton.isEnabled();
+				if(res) {
+					log.Loginfo("Login button is Enabled");
+				}else {
+					log.Loginfo("Login button is not Enabled");
+					res = false;
+				}
 			}else {
 				res = false;
 			}
@@ -92,6 +140,7 @@ public class LoginPage extends Base{
 	
 	public String Login(String Username, String Password) {
 		String result = null;
+		boolean popUp = false;
 		log = new Logging();
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		LoginPage lp = new LoginPage();
@@ -99,14 +148,35 @@ public class LoginPage extends Base{
 			if(lp.usernameField()) {
 				if(lp.passwordField()) {
 					if(lp.loginButton()) {
-						WebElement username = driver.findElement(UsernameField);
-						WebElement password = driver.findElement(PasswordField);
-						WebElement loginbutton = driver.findElement(LoginButton);
-						username.sendKeys(Username);
-						password.sendKeys(Password);
-						loginbutton.click();
-						//wait.until(Expectedconditions.)
-						result = driver.getTitle();
+//						WebElement username = driver.findElement(UsernameField);
+//						WebElement password = driver.findElement(PasswordField);
+//						WebElement loginbutton = driver.findElement(LoginButton);
+//						username.clear();
+//						password.clear();
+//						username.sendKeys(Username);
+//						password.sendKeys(Password);
+//						loginbutton.click();
+						UsernameField.clear();
+						log.Loginfo("Username text field is cleared");
+						PasswordField.clear();
+						log.Loginfo("Password text field is cleared");
+						UsernameField.sendKeys(Username);
+						log.Loginfo("Username is entered as :"+Username);
+						PasswordField.sendKeys(Password);
+						log.Loginfo("Password is entered as :"+Password);
+						LoginButton.click();
+						log.Loginfo("Login button is clicked");
+						wait.until(ExpectedConditions.elementToBeClickable(popUpAccept));
+						popUp = popUpMessage.isDisplayed();
+						if(popUp) {
+							result = popUpMessage.getText();
+							log.Loginfo("Pop up is redirected: "+result);
+							popUpAccept.click();
+						}else {
+							result = driver.getCurrentUrl();
+							log.Loginfo("Current Page title is: "+result);
+						}
+						
 					}else {
 						result = "login button is not Enabled";
 					}

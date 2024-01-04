@@ -3,7 +3,6 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,7 +20,7 @@ public class RegistrationPage extends Base{
 	public Logging log;
 	public WebDriverWait wait;
 	
-	protected By deviceId = By.id("com.atyati.ganaseva.mfi:id/et_Registration_DeviceID");
+//	protected By deviceId = By.id("com.atyati.ganaseva.mfi:id/et_Registration_DeviceID");
 	
 	protected  By userId = By.id("com.atyati.ganaseva.mfi:id/et_Registration_UserID");
 
@@ -39,6 +38,8 @@ public class RegistrationPage extends Base{
 	
 	protected  By Permission3 = By.id("com.android.permissioncontroller:id/permission_allow_button");
 	
+	@AndroidFindBy(id="com.atyati.ganaseva.mfi:id/et_Registration_DeviceID")
+	private WebElement deviceID;
 	/*key xpath=//android.widget.TextView[@resource-id='android:id/message']
 	id= android:id/message
 	*/
@@ -64,7 +65,7 @@ public class RegistrationPage extends Base{
 	
 	public RegistrationPage() {
 		super();
-//		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);
 	}
 	
 	public boolean deviceIDField() {
@@ -72,10 +73,11 @@ public class RegistrationPage extends Base{
 		Boolean val = false;
 		try {
 			log.Loginfo("Getting the Device ID field status");
-			WebElement device = driver.findElement(deviceId);
-			val = device.isDisplayed();
+//			WebElement device = driver.findElement(deviceId);
+//			val = device.isDisplayed();
+			val = deviceID.isDisplayed();
 			if(val) {
-				val = device.isEnabled();
+				val = deviceID.isEnabled();
 			}else {
 				val = false;
 			}
@@ -134,14 +136,14 @@ public class RegistrationPage extends Base{
 		try {
 			if (Testflag=="d") {
 				try {
-					WebElement device = driver.findElement(deviceId);
-					wait.until(ExpectedConditions.visibilityOf(device));
+//					WebElement device = driver.findElement(deviceId);
+					wait.until(ExpectedConditions.visibilityOf(deviceID));
 					WebElement user = driver.findElement(userId);
 					wait.until(ExpectedConditions.visibilityOf(user));
 					WebElement reg = driver.findElement(regbutton);
 					wait.until(ExpectedConditions.visibilityOf(reg));
 					try {
-						device.sendKeys(DeviceId);
+						deviceID.sendKeys(DeviceId);
 						user.sendKeys(UserId);
 						reg.click();
 						String key = "Your Key is";

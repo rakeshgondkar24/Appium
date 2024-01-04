@@ -1,0 +1,19 @@
+package qa.yblapp.sample;
+
+import org.testng.annotations.*;
+
+import qa.ybl.pages.LoginPage;
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class TestLogin extends Base{
+	
+	public LoginPage login;
+	public Logging log;
+	
+	@BeforeMethod
+	public void Setup() {
+		Initializations();
+	}
+	
+}

@@ -1,6 +1,0 @@
-devicename = Galaxy 8
-platformName = Android
-platformVersion = 11
-udid = R9WN71GDDYJ
-mainjs = C:\\Users\\rakesh.g\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js
-ip = 127.0.0.1

@@ -1,0 +1,416 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class HomePage extends Base {
+	public Logging log;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[1]")
+	private WebElement QDE;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[2]")
+	private WebElement CenterAndGroup;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[3]")
+	private WebElement CBReport;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[4]")
+	private WebElement CCRCBReport;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[5]")
+	private WebElement Disbursal;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[6]")
+	private WebElement Collection;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[7]")
+	private WebElement OverdueCollection;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[8]")
+	private WebElement CGT;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[9]")
+	private WebElement GRT;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[10]")
+	private WebElement MIS;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[11]")
+	private WebElement CBReject;
+	
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout[@resource-id='com.atyati.ganaseva.mfi:id/android_custom_gridview_layout'])[12]")
+	private WebElement Settings;
+	
+	public HomePage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+
+	public Boolean checkQde() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = QDE.isDisplayed();
+			if(val) {
+				log.Loginfo("QDE is displayed");
+				val = QDE.isEnabled();
+				if(val) {
+					log.Loginfo("QDE is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("QDE is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("QDE option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCenterAndGroup() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = CenterAndGroup.isDisplayed();
+			if(val) {
+				log.Loginfo("CenterAndGroup option is displayed");
+				val = CenterAndGroup.isEnabled();
+				if(val) {
+					log.Loginfo("CenterAndGroup option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("CenterAndGroup option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("CenterAndGroup option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCbReport() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = CBReport.isDisplayed();
+			if(val) {
+				log.Loginfo("checkCbReport option is displayed");
+				val = CBReport.isEnabled();
+				if(val) {
+					log.Loginfo("checkCbReport option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("checkCbReport option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("checkCbReport option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCcrCbReport() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = CCRCBReport.isDisplayed();
+			if(val) {
+				log.Loginfo("CcrCbReport option is displayed");
+				val = CCRCBReport.isEnabled();
+				if(val) {
+					log.Loginfo("CcrCbReport option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("CcrCbReport option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("CcrCbReport option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkDisbursal() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = Disbursal.isDisplayed();
+			if(val) {
+				log.Loginfo("Disbursal option is displayed");
+				val = Disbursal.isEnabled();
+				if(val) {
+					log.Loginfo("Disbursal option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Disbursal option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Disbursal option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCollection() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = Collection.isDisplayed();
+			if(val) {
+				log.Loginfo("Collection option is displayed");
+				val = Collection.isEnabled();
+				if(val) {
+					log.Loginfo("Collection option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Collection option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Collection option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkOverdueCollection() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = OverdueCollection.isDisplayed();
+			if(val) {
+				log.Loginfo("OverdueCollection option is displayed");
+				val = OverdueCollection.isEnabled();
+				if(val) {
+					log.Loginfo("OverdueCollection option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("OverdueCollection option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("OverdueCollection option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCgt() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = CGT.isDisplayed();
+			if(val) {
+				log.Loginfo("Cgt option is displayed");
+				val = CGT.isEnabled();
+				if(val) {
+					log.Loginfo("Cgt option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Cgt option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Cgt option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkGrt() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = GRT.isDisplayed();
+			if(val) {
+				log.Loginfo("Grt option is displayed");
+				val = GRT.isEnabled();
+				if(val) {
+					log.Loginfo("Grt option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Grt option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Grt option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkMis() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = MIS.isDisplayed();
+			if(val) {
+				log.Loginfo("Mis option is displayed");
+				val = MIS.isEnabled();
+				if(val) {
+					log.Loginfo("Mis option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Mis option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Mis option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkCbReject() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = CBReject.isDisplayed();
+			if(val) {
+				log.Loginfo("CbReject option is displayed");
+				val = CBReject.isEnabled();
+				if(val) {
+					log.Loginfo("CbReject option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("CbReject option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("CbReject option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public Boolean checkSettings() {
+		Boolean val = false;
+		log = new Logging();
+		try {
+			val = Settings.isDisplayed();
+			if(val) {
+				log.Loginfo("Settings option is displayed");
+				val = Settings.isEnabled();
+				if(val) {
+					log.Loginfo("Settings option is Enabled");
+				}else {
+					val = false;
+					log.Loginfo("Settings option is not Enabled");
+				}
+			}else {
+				val = false;
+				log.Loginfo("Settings option is not displaying");
+			}
+		}catch(Exception e) {
+			
+		}
+		return val;
+	}
+	
+	public AndroidDriver clickQuickDataEntry() {
+		AndroidDriver driver = null;
+		Boolean res = false;
+		log = new Logging();
+		try {
+			HomePage hm = new HomePage();
+			res = hm.checkQde();
+			if(res) {
+				QDE.click();
+			}else {
+				driver = null;
+			}
+		}catch(Exception e) {
+			log.Logerror("HomePage.clickQuickDataEntry()"+"\n"+e);
+		}
+		return driver;
+	}
+	
+	public AndroidDriver clickCenterAndGroup() {
+		AndroidDriver driver = null;
+		Boolean res = false;
+		log = new Logging();
+		try {
+			HomePage hm = new HomePage();
+			res = hm.checkCenterAndGroup();
+			if(res) {
+				QDE.click();
+			}else {
+				driver = null;
+			}
+		}catch(Exception e) {
+			log.Logerror("HomePage.clickCenterAndGroup()"+"\n"+e);
+		}
+		return driver;
+	}
+	
+	public AndroidDriver clickCbReport() {
+		AndroidDriver driver = null;
+		Boolean res = false;
+		log = new Logging();
+		try {
+			HomePage hm = new HomePage();
+			res = hm.checkCbReport();
+			if(res) {
+				QDE.click();
+			}else {
+				driver = null;
+			}
+		}catch(Exception e) {
+			log.Logerror("HomePage.clickCbReport()"+"\n"+e);
+		}
+		return driver;
+	}
+	
+	public AndroidDriver clickCcrReport() {
+		AndroidDriver driver = null;
+		Boolean res = false;
+		log = new Logging();
+		try {
+			HomePage hm = new HomePage();
+			res = hm.checkCcrCbReport();
+			if(res) {
+				QDE.click();
+			}else {
+				driver = null;
+			}
+		}catch(Exception e) {
+			log.Logerror("HomePage.clickCcrReport()"+"\n"+e);
+		}
+		return driver;
+	}
+}

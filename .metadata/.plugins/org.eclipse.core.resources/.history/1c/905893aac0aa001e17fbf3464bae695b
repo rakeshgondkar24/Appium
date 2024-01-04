@@ -1,0 +1,139 @@
+package qa.ybl.pages;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
+
+
+public class LoginPage extends Base{
+	/*
+	 *This class contains all the information of login page like text fields, buttons.
+	 */
+
+	/*Username
+	 * id = com.atyati.ganaseva.mfi:id/et_Username
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Username']
+	 */
+	
+	/*Passsword
+	 * id = com.atyati.ganaseva.mfi:id/et_Password
+	 * xpath = //android.widget.EditText[@resource-id='com.atyati.ganaseva.mfi:id/et_Password']
+	 */
+	
+	/*Login button
+	 * id = com.atyati.ganaseva.mfi:id/Btn_Login
+	 * xpath = //android.widget.Button[@resource-id='com.atyati.ganaseva.mfi:id/Btn_Login']
+	 */
+	public Logging log;
+	public WebDriverWait wait;
+//	protected By UsernameField = By.id("com.atyati.ganaseva.mfi:id/et_Username");
+//	protected By PasswordField = By.id("com.atyati.ganaseva.mfi:id/et_Password");
+//	protected By LoginButton = By.id("com.atyati.ganaseva.mfi:id/Btn_Login");
+	
+	@AndroidFindBy(id="com.atyati.ganaseva.mfi:id/et_Username")
+	private WebElement UsernameField;
+	
+	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/et_Password")
+	private WebElement PasswordField;
+	
+	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/Btn_Login")
+	private WebElement LoginButton;
+	
+	public LoginPage() {
+		super();
+		PageFactory.initElements(driver, this);
+	}
+	
+	public boolean usernameField() {
+		log = new Logging();
+		Boolean res = false;
+		try {
+//			WebElement Username = driver.findElement(UsernameField);
+			res = UsernameField.isDisplayed();
+			if(res) {
+				res = UsernameField.isEnabled();
+			}else {
+				res = false;
+			}
+		}catch(Exception e) {
+			log.Logerror("LoginPage.usernameField()"+"\n"+e);
+		}
+		return res;
+	}
+	
+	public boolean passwordField() {
+		Boolean res = false;
+		log = new Logging();
+		try {
+//			WebElement Password = driver.findElement(PasswordField);
+			res = PasswordField.isDisplayed();
+			if(res) {
+				res = PasswordField.isEnabled();
+			}else {
+				res = false;
+			}
+		}catch(Exception e) {
+			log.Logerror("LoginPage.passwordField()"+"\n"+e);
+		}
+		return res;
+	}
+	
+	public boolean loginButton() {
+		Boolean res = false;
+		log = new Logging();
+		try {
+//			WebElement Logginbutton = driver.findElement(LoginButton);
+			res = LoginButton.isDisplayed();
+			if(res) {
+				res = LoginButton.isEnabled();
+			}else {
+				res = false;
+			}
+		}catch(Exception e) {
+			log.Logerror("LoginPage.loginButton()"+"\n"+e);
+		}
+		return res;
+	}
+	
+	public String Login(String Username, String Password) {
+		String result = null;
+		log = new Logging();
+		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		LoginPage lp = new LoginPage();
+		try {
+			if(lp.usernameField()) {
+				if(lp.passwordField()) {
+					if(lp.loginButton()) {
+//						WebElement username = driver.findElement(UsernameField);
+//						WebElement password = driver.findElement(PasswordField);
+//						WebElement loginbutton = driver.findElement(LoginButton);
+//						username.clear();
+//						password.clear();
+//						username.sendKeys(Username);
+//						password.sendKeys(Password);
+//						loginbutton.click();
+						//wait.until(Expectedconditions.)
+						result = driver.getTitle();
+					}else {
+						result = "login button is not Enabled";
+					}
+				}else {
+					result = "password field is not Enabled";
+				}
+			}else {
+				result = "username field is not Enabled";
+			}
+		}catch(Exception e) {
+			log.Logerror("LoginPage.Login()"+"\n"+e);
+		}
+		return result;
+	}
+}
