@@ -142,7 +142,7 @@ public class LoginPage extends Base{
 		String result = null;
 		boolean popUp = false;
 		log = new Logging();
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait = new WebDriverWait(driver, Duration.ofMillis(2000));
 		LoginPage lp = new LoginPage();
 		try {
 			if(lp.usernameField()) {

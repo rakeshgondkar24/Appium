@@ -94,6 +94,7 @@ public class Base {
 		String url = prop.getProperty("url");
 		String App = prop.getProperty("app");
 		String deviceName = prop.getProperty("devicename");
+		log.Loginfo("<<<<<<<<<<------Execution Started------>>>>>>>>>>");
 		log.Loginfo("MAINJS path is: "+"\n"+main);
 		log.Loginfo("IP Address is: "+"\n"+ip);
 		log.Loginfo("url is: "+"\n"+url);
@@ -132,6 +133,7 @@ public class Base {
 		String url = prop.getProperty("url");
 		String App = prop.getProperty("app");
 		String deviceName = prop.getProperty("devicename");
+		log.Loginfo("<<<<<<<<<<------Execution Started------>>>>>>>>>>");
 		log.Loginfo("MAINJS path is: "+"\n"+main);
 		log.Loginfo("IP Address is: "+"\n"+ip);
 		log.Loginfo("url is: "+"\n"+url);

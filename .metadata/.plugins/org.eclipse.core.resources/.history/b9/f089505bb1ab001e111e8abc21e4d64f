@@ -1,0 +1,36 @@
+package qa.yblapp.sample;
+
+import java.net.MalformedURLException;
+
+import org.testng.annotations.*;
+
+import qa.ybl.pages.LoginPage;
+import qa.ybl.pages.QdePage;
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class TestLogin extends Base{
+	
+	public LoginPage login;
+	public Logging log;
+	public QdePage qde;
+	
+	@BeforeMethod
+	public void setup() throws MalformedURLException {
+		InitializationForLogin();
+	}
+	
+	@Test
+	public void homePage() {
+		String result;
+		login = new LoginPage();
+		result = login.Login("RakeshGondakar", "Atyati@123");
+	}
+	
+	@Test
+	public void QDE() {
+		qde = new QdePage();
+		qde.getIntoQde("RakeshGondakar", "Atyati@123");
+		qde.submitQDE("nonekyc", "RG12345678", "RG12345678", "YES");
+	}
+}

@@ -5,8 +5,8 @@
     <classes>
       <class name="qa.yblapp.sample.TestLogin">
         <methods>
-          <include name="homePage"/>
-          <include name="Setup"/>
+          <include name="setup"/>
+          <include name="QDE" invocation-numbers="0"/>
         </methods>
       </class> <!-- qa.yblapp.sample.TestLogin -->
     </classes>
