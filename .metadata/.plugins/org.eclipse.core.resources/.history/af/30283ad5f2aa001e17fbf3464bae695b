@@ -1,0 +1,12 @@
+package qa.ybl.pages;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class QdePage extends Base{
+	public Logging log;
+	public LoginPage login;
+	
+	
+
+}

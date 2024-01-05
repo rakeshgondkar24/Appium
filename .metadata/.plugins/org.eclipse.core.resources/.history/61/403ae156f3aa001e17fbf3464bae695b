@@ -1,0 +1,31 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.support.PageFactory;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class QdePage extends Base{
+	public Logging log;
+	public LoginPage login;
+	public HomePage home;
+	
+	
+	public QdePage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+	
+	public void getIntoQde() {
+		log = new Logging();
+		login = new LoginPage();
+		home = new HomePage();
+		try {
+			
+		}catch(Exception e) {
+			log.Logerror("QdePage.getIntoQde()"+"\n"+e);
+		}
+	}
+
+}

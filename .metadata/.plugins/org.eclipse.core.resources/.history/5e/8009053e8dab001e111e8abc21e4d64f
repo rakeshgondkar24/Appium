@@ -1,0 +1,38 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+import qa.yblapp.logging.Logging;
+
+public class QdePage extends Base{
+	public Logging log;
+	public LoginPage login;
+	public HomePage home;
+	
+	
+	@AndroidFindBy(id = "")
+	private WebElement ekyc;
+	
+	public QdePage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+	
+	public void getIntoQde(String Username,String Password) {
+		log = new Logging();
+		login = new LoginPage();
+		home = new HomePage();
+		try {
+			login.Login(Username, Password);
+			home.clickQuickDataEntry();
+		}catch(Exception e) {
+			log.Logerror("QdePage.getIntoQde()"+"\n"+e);
+		}
+	}
+
+}
