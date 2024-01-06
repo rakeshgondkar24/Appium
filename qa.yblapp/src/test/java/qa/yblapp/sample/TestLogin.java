@@ -42,9 +42,15 @@ public class TestLogin extends Base{
 	
 	@Test(dataProvider = "getQdeData")
 	public void QDE(String TSID,String Description,String TestFlag,String Username,String Password,String Ekyc,String VoterID,
-			String ReEnterVoterID,String DemandCollected,String ExpectedResult) {
+			String ReEnterVoterID,String DemandCollected,String FirstName,
+			String MiddleName,String LastName,String Address1,String Address2,String State,String City,String PostalCode,
+			String Village,String DateOfBirth,String Gender,String MaritalStatus,String MobileNo,String SecondaryMobileNo,
+			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure,
+			String NoofInstallment,String ExpectedResult) {
 		qde = new QdePage();
 		qde.getIntoQde(Username, Password);
-		qde.submitQDE(Ekyc, VoterID, ReEnterVoterID, DemandCollected);
+		qde.submitQDE(Ekyc, VoterID, ReEnterVoterID, DemandCollected,FirstName,MiddleName,LastName,Address1,Address2,
+				State,City,PostalCode,Village,DateOfBirth,Gender,MaritalStatus,MobileNo,SecondaryMobileNo,MotherName,FatherName,BCNo,
+				Frequency,AppliedLoanAmount,LoanTenure,NoofInstallment);
 	}
 }

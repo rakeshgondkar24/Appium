@@ -7,10 +7,11 @@ import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-public class Logging {
+import qa.yblapp.base.*;
+public class Logging extends Base{
 	
 	static org.apache.log4j.Logger log;
+	public static String name = prop.getProperty("testername");
 	
 	public Logging() {
 		try {
@@ -27,12 +28,12 @@ public class Logging {
 	}
 
 	public void Loginfo(String info) {
-		log = Logger.getLogger("Tester");
+		log = Logger.getLogger("ScriptExecutor: "+name);
 		log.debug(info);
 	}
 	
 	public void Logerror(String error) {
-		Logger log = Logger.getLogger("Tester");
+		Logger log = Logger.getLogger("ScriptExecutor: "+name);
 		log.error(error);
 	}
 }
