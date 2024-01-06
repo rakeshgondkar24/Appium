@@ -55,6 +55,9 @@ public class QdePage extends Base{
 	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/et_village")
 	private WebElement village;
 	
+	@AndroidFindBy(id = "")
+	private WebElement postalCode;
+	
 	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/et_dob")
 	private WebElement dateOfBirth;
 	
@@ -118,25 +121,73 @@ public class QdePage extends Base{
 	}
 	
 	private String Result(String Val) {
+		log = new Logging();
+		log.Loginfo("Inside the Result() of QdePage");
 		String result = null;
-		if(Val.equals(null)){
-			result = "";
-		}else {
-			result = Val;
+		try {
+			if(Val.equals(null)){
+				log.Loginfo("Value of the field is NULL");
+				result = "";
+			}else {
+				result = Val;
+			}
+		} catch (Exception e) {
+			log.Logerror("QdePage.Result()"+"\n"+e);
 		}
 		return result;
 	}
+	
+	private void SelectGender(String Gender) {
+		log = new Logging();
+		log.Loginfo("Value of Gender is: "+Gender);
+		String val = Gender.toLowerCase();
+		try {
+			if (val!=null) {
+				if (val.equalsIgnoreCase("male")) {
+					male.click();
+				} else if (val.equalsIgnoreCase("female")) {
+					feMale.click();
+				} else if (val.equalsIgnoreCase("other")) {
+					others.click();
+				} else {
+					male.click();
+				} 
+			}
+		}catch(Exception e) {
+			log.Logerror("QdePage.SelectGender():"+"\n"+e);
+		}
+	}
 
-	public void submitQDE(String KycType,String VoterID, String ReEnterVoterID,String DemandCollected) {
+	public void submitQDE(String KycType,String VoterID, String ReEnterVoterID,String DemandCollected
+			,String FirstName,
+			String MiddleName,String LastName,String Address1,String Address2,String State,String City,String PostalCode,
+			String Village,String DateOfBirth,String Gender,String MaritalStatus,String MobileNo,String SecondaryMobileNo,
+			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure,
+			String NoofInstallment) {
 		log = new Logging();
 		QdePage qd = new QdePage();
 		gl = new Global();
-//		MiddleName = qd.Result(MiddleName);
-//		LastName = qd.Result(LastName);
-//		Address2 = qd.Result(Address2);
-//		SecondaryMobileNo = qd.Result(SecondaryMobileNo);
-//		FatherName = qd.Result(FatherName);
-//		BCNo = qd.Result(BCNo);
+		FirstName = qd.Result(FirstName);
+		MiddleName = qd.Result(MiddleName);
+		LastName = qd.Result(LastName);
+		Address1 = qd.Result(Address1);
+		Address2 = qd.Result(Address2);
+		State = qd.Result(State);
+		City = qd.Result(City);
+		PostalCode = qd.Result(PostalCode);
+		Village = qd.Result(Village);
+		DateOfBirth = qd.Result(DateOfBirth);
+		Gender = qd.Result(Gender);
+		MaritalStatus = qd.Result(MaritalStatus);
+		MobileNo = qd.Result(MobileNo);
+		SecondaryMobileNo = qd.Result(SecondaryMobileNo);
+		MotherName = qd.Result(MotherName);
+		FatherName = qd.Result(FatherName);
+		BCNo = qd.Result(BCNo);
+		Frequency = qd.Result(Frequency);
+		AppliedLoanAmount = qd.Result(AppliedLoanAmount);
+		LoanTenure = qd.Result(LoanTenure);
+		NoofInstallment = qd.Result(NoofInstallment);
 		KycType = KycType.toLowerCase();
 		//DemandCollected = DemandCollected.toUpperCase();
 		try {
@@ -153,15 +204,29 @@ public class QdePage extends Base{
 			voterId.sendKeys(VoterID);
 			reEnterVoterId.sendKeys(ReEnterVoterID);
 			gl.SelectVal(driver, demandCollected, DemandCollected);
-			
+			firstName.sendKeys(FirstName);
+			middleName.sendKeys(MiddleName);
+			lastName.sendKeys(LastName);
+			address1.sendKeys(Address1);
+			address2.sendKeys(Address2);
+			gl.SelectVal(driver, state, State);
+			gl.SelectVal(driver, city, City);
+			gl.SelectVal(driver, postalCode, PostalCode);
+			village.sendKeys(Village);
+			dateOfBirth.sendKeys(DateOfBirth);
+			qd.SelectGender(Gender);
+			gl.SelectVal(driver, maritalStatus, MaritalStatus);
+			mobileNo.sendKeys(MobileNo);
+			secondaryMobileNo.sendKeys(SecondaryMobileNo);
+			motherName.sendKeys(MotherName);
+			fatherName.sendKeys(FatherName);
+			bcNo.sendKeys(BCNo);
+			gl.SelectVal(driver, frequency, Frequency);
+			gl.SelectVal(driver, appliedLoanAmount, AppliedLoanAmount);
+			gl.SelectVal(driver, loanTenure, LoanTenure);
+			gl.SelectVal(driver, noOfInstallment, NoofInstallment);
 		}catch(Exception e) {
 			log.Logerror("QdePage.submitQDE()"+"\n"+e);
 		}
 	}
-	/*
-	 * ,String FirstName,
-			String MiddleName,String LastName,String Address1,String Address2,String State,String City,String PostalCode,
-			String Village,String DateOfBirth,String Gender,String MaritalStatus,String MobileNo,String SecondaryMobileNo,
-			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure,String NoofInstallment
-	 */
 }

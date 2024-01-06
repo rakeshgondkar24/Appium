@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import qa.yblapp.logging.Logging;
 
@@ -47,17 +48,26 @@ public class Global {
 		return data;
 	}
 
+	/*
+	 * This method takes the screenshot
+	 * filepath: path the file where snapshot to be placed
+	 * filename: name of the file which is assigned to screenshot 
+	 */
 	public void takeScreenShot(AndroidDriver driver,String filepath, String filename) {
 		log = new Logging();
 		try {
-			String snap = filepath+"\\"+"TS_"+filename+".png";
-			TakesScreenshot sc = (TakesScreenshot) driver;
-			File file = sc.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(file, new File(snap));
+			String fileName = filepath+"\\"+"TS_"+filename+".png";
+			File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(sourceFile, new File(fileName),true);
 		} catch (Exception e) {
 			log.Logerror("Global.takeScreenShot()"+"\n"+e);
 		}
 	}
+	
+	/*
+	 * This method selects the given value from the drop down menu
+	 * 
+	 */
 	
 	public void SelectVal(AndroidDriver driver,WebElement element,String Val) {
 		log = new Logging();
@@ -76,8 +86,13 @@ public class Global {
 //			log.Loginfo("Value inside the Select method is: "+val);
 //			sc.selectByValue(val);
 			log.Loginfo("Trying to select the drop down value");
-			driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.atyati.ganaseva.mfi:id/customtextview' and @text='"+Val+"']")).click();
-			log.Loginfo("Drop down value is selected");
+			//driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.atyati.ganaseva.mfi:id/customtextview' and @text='"+Val+"']")).click();
+			try {
+				driver.findElement(AppiumBy.androidUIAutomator("new UIScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new Uiselector().textcontains("+Val+")).instance(0))")).click();
+				log.Loginfo("Drop down value is selected");
+			} catch (Exception e) {
+				log.Logerror("Global.SelectVal().ScrollingAndSelectingTheValue:"+"\n"+e);
+			}
 		}catch(Exception e) {
 			log.Logerror("Global.SelectVal():"+"\n"+e);
 		}
