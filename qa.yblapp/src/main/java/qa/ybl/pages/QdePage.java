@@ -1,7 +1,11 @@
 package qa.ybl.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -14,6 +18,7 @@ public class QdePage extends Base{
 	public LoginPage login;
 	public HomePage home;
 	public Global gl;
+	public WebDriverWait wait;
 	
 	
 	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/rb_ekyc_input")
@@ -103,9 +108,450 @@ public class QdePage extends Base{
 	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/btn_check_eligibility")
 	private WebElement submit;
 	
+	@AndroidFindBy(id = "com.atyati.ganaseva.mfi:id/textinput_error")
+	private WebElement errorMessage;
+	
+	@AndroidFindBy(id = "android:id/message")
+	private WebElement popUpMessage;
+	
+	@AndroidFindBy(id = "android:id/button1")
+	private WebElement accept;
+	
 	public QdePage() {
 		super();
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+	
+	private boolean eKycField() {
+		boolean res = false;
+		res = eKyc.isDisplayed();
+		if(res) {
+			res = eKyc.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("ekyc button is not enabled");
+			}
+		}else {
+			log.Loginfo("ekyc button is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean NonEeKycField() {
+		boolean res = false;
+		res = nonEkyc.isDisplayed();
+		if(res) {
+			res = nonEkyc.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("nonEkyc button is not enabled");
+			}
+		}else {
+			log.Loginfo("nonEkyc button is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean voterIdField() {
+		boolean res = false;
+		res = voterId.isDisplayed();
+		if(res) {
+			res = voterId.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("voterId field is not enabled");
+			}
+		}else {
+			log.Loginfo("voterId field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean reEnterVoterIdField() {
+		boolean res = false;
+		res = reEnterVoterId.isDisplayed();
+		if(res) {
+			res = reEnterVoterId.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("reEnterVoterId field is not enabled");
+			}
+		}else {
+			log.Loginfo("reEnterVoterId field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean demandCollectedField() {
+		boolean res = false;
+		res = demandCollected.isDisplayed();
+		if(res) {
+			res = demandCollected.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("demandCollected field is not enabled");
+			}
+		}else {
+			log.Loginfo("demandCollected field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean firstNameField() {
+		boolean res = false;
+		res = firstName.isDisplayed();
+		if(res) {
+			res = firstName.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("firstName field is not enabled");
+			}
+		}else {
+			log.Loginfo("firstName field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean middleNameField() {
+		boolean res = false;
+		res = middleName.isDisplayed();
+		if(res) {
+			res = middleName.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("middleName field is not enabled");
+			}
+		}else {
+			log.Loginfo("middleName field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean lastNameField() {
+		boolean res = false;
+		res = lastName.isDisplayed();
+		if(res) {
+			res = lastName.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("lastName field is not enabled");
+			}
+		}else {
+			log.Loginfo("lastName field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean address1Field() {
+		boolean res = false;
+		res = address1.isDisplayed();
+		if(res) {
+			res = address1.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("address1 field is not enabled");
+			}
+		}else {
+			log.Loginfo("address1 field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean address2Field() {
+		boolean res = false;
+		res = address2.isDisplayed();
+		if(res) {
+			res = address2.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("address2 field is not enabled");
+			}
+		}else {
+			log.Loginfo("address2 field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean stateField() {
+		boolean res = false;
+		res = state.isDisplayed();
+		if(res) {
+			res = state.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("state field is not enabled");
+			}
+		}else {
+			log.Loginfo("state field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean cityField() {
+		boolean res = false;
+		res = city.isDisplayed();
+		if(res) {
+			res = city.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("city field is not enabled");
+			}
+		}else {
+			log.Loginfo("city field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean postalCodeField() {
+		boolean res = false;
+		res = postalCode.isDisplayed();
+		if(res) {
+			res = postalCode.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("postalCode field is not enabled");
+			}
+		}else {
+			log.Loginfo("postalCode field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean villageField() {
+		boolean res = false;
+		res = village.isDisplayed();
+		if(res) {
+			res = village.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("village field is not enabled");
+			}
+		}else {
+			log.Loginfo("village field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean dateOfBirthField() {
+		boolean res = false;
+		res = dateOfBirth.isDisplayed();
+		if(res) {
+			res = dateOfBirth.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("dateOfBirth field is not enabled");
+			}
+		}else {
+			log.Loginfo("dateOfBirth field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean genderMaleField() {
+		boolean res = false;
+		res = male.isDisplayed();
+		if(res) {
+			res = male.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("male field is not enabled");
+			}
+		}else {
+			log.Loginfo("male field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean genderFemaleField() {
+		boolean res = false;
+		res = feMale.isDisplayed();
+		if(res) {
+			res = feMale.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("feMale field is not enabled");
+			}
+		}else {
+			log.Loginfo("feMale field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean genderOthersField() {
+		boolean res = false;
+		res = others.isDisplayed();
+		if(res) {
+			res = others.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("others field is not enabled");
+			}
+		}else {
+			log.Loginfo("others field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean maritalStatusField() {
+		boolean res = false;
+		res = maritalStatus.isDisplayed();
+		if(res) {
+			res = maritalStatus.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("maritalStatus field is not enabled");
+			}
+		}else {
+			log.Loginfo("maritalStatus field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean secondaryMobileNoField() {
+		boolean res = false;
+		res = secondaryMobileNo.isDisplayed();
+		if(res) {
+			res = secondaryMobileNo.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("secondaryMobileNo field is not enabled");
+			}
+		}else {
+			log.Loginfo("secondaryMobileNo field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean motherNameField() {
+		boolean res = false;
+		res = motherName.isDisplayed();
+		if(res) {
+			res = motherName.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("motherName field is not enabled");
+			}
+		}else {
+			log.Loginfo("motherName field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean fatherNameField() {
+		boolean res = false;
+		res = fatherName.isDisplayed();
+		if(res) {
+			res = fatherName.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("fatherName field is not enabled");
+			}
+		}else {
+			log.Loginfo("fatherName field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean bcNoField() {
+		boolean res = false;
+		res = bcNo.isDisplayed();
+		if(res) {
+			res = bcNo.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("bcNo field is not enabled");
+			}
+		}else {
+			log.Loginfo("bcNo field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean frequencyField() {
+		boolean res = false;
+		res = frequency.isDisplayed();
+		if(res) {
+			res = frequency.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("frequency field is not enabled");
+			}
+		}else {
+			log.Loginfo("frequency field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean appliedLoanAmountField() {
+		boolean res = false;
+		res = appliedLoanAmount.isDisplayed();
+		if(res) {
+			res = appliedLoanAmount.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("appliedLoanAmount field is not enabled");
+			}
+		}else {
+			log.Loginfo("appliedLoanAmount field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean loanTenureField() {
+		boolean res = false;
+		res = loanTenure.isDisplayed();
+		if(res) {
+			res = loanTenure.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("loanTenure field is not enabled");
+			}
+		}else {
+			log.Loginfo("loanTenure field is not displaying in the page");
+		}
+		return res;
+	}
+	
+	private boolean noOfInstallmentField() {
+		boolean res = false;
+		res = noOfInstallment.isDisplayed();
+		if(res) {
+			res = noOfInstallment.isEnabled();
+			if(res) {
+				res = true;
+			}else {
+				log.Loginfo("noOfInstallment field is not enabled");
+			}
+		}else {
+			log.Loginfo("noOfInstallment field is not displaying in the page");
+		}
+		return res;
 	}
 	
 	public void getIntoQde(String Username,String Password) {
@@ -157,13 +603,32 @@ public class QdePage extends Base{
 			log.Logerror("QdePage.SelectGender():"+"\n"+e);
 		}
 	}
+	
+	private String Submit() {
+		log = new Logging();
+		String result=null;
+		wait = new WebDriverWait(driver,Duration.ofMillis(1000));
+		try {
+			submit.click();
+			wait.until(ExpectedConditions.visibilityOf(errorMessage));
+			if(errorMessage.isDisplayed()) {
+				result = errorMessage.getText();
+			}else if(popUpMessage.isDisplayed()) {
+				result = popUpMessage.getText();
+				accept.click();
+			}
+		}catch(Exception e) {
+			log.Logerror("QdePage.Submit()"+"\n"+e);
+		}
+		return result;
+	}
 
-	public void submitQDE(String KycType,String VoterID, String ReEnterVoterID,String DemandCollected
+	public String submitQDE(String KycType,String VoterID, String ReEnterVoterID,String DemandCollected
 			,String FirstName,
 			String MiddleName,String LastName,String Address1,String Address2,String State,String City,String PostalCode,
 			String Village,String DateOfBirth,String Gender,String MaritalStatus,String MobileNo,String SecondaryMobileNo,
-			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure,
-			String NoofInstallment) {
+			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure) {
+		String result =  null;
 		log = new Logging();
 		QdePage qd = new QdePage();
 		gl = new Global();
@@ -187,7 +652,7 @@ public class QdePage extends Base{
 		Frequency = qd.Result(Frequency);
 		AppliedLoanAmount = qd.Result(AppliedLoanAmount);
 		LoanTenure = qd.Result(LoanTenure);
-		NoofInstallment = qd.Result(NoofInstallment);
+//		NoofInstallment = qd.Result(NoofInstallment);
 		KycType = KycType.toLowerCase();
 		//DemandCollected = DemandCollected.toUpperCase();
 		try {
@@ -224,9 +689,11 @@ public class QdePage extends Base{
 			gl.SelectVal(driver, frequency, Frequency);
 			gl.SelectVal(driver, appliedLoanAmount, AppliedLoanAmount);
 			gl.SelectVal(driver, loanTenure, LoanTenure);
-			gl.SelectVal(driver, noOfInstallment, NoofInstallment);
+//			gl.SelectVal(driver, noOfInstallment, NoofInstallment);
+			result = qd.Submit();
 		}catch(Exception e) {
 			log.Logerror("QdePage.submitQDE()"+"\n"+e);
 		}
+		return result;
 	}
 }
