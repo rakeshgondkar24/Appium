@@ -46,11 +46,11 @@ public class TestLogin extends Base{
 			String MiddleName,String LastName,String Address1,String Address2,String State,String City,String PostalCode,
 			String Village,String DateOfBirth,String Gender,String MaritalStatus,String MobileNo,String SecondaryMobileNo,
 			String MotherName,String FatherName,String BCNo,String Frequency,String AppliedLoanAmount,String LoanTenure,
-			String NoofInstallment,String ExpectedResult) {
+			String ExpectedResult) {
 		qde = new QdePage();
 		qde.getIntoQde(Username, Password);
 		qde.submitQDE(Ekyc, VoterID, ReEnterVoterID, DemandCollected,FirstName,MiddleName,LastName,Address1,Address2,
 				State,City,PostalCode,Village,DateOfBirth,Gender,MaritalStatus,MobileNo,SecondaryMobileNo,MotherName,FatherName,BCNo,
-				Frequency,AppliedLoanAmount,LoanTenure,NoofInstallment);
+				Frequency,AppliedLoanAmount,LoanTenure);
 	}
 }
