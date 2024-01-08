@@ -1,0 +1,20 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+
+public class CbReportPage extends Base {
+	
+	@AndroidFindBy()
+	private WebElement ys;
+
+	public CbReportPage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+}
