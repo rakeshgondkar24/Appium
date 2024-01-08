@@ -1,0 +1,14 @@
+package qa.ybl.pages;
+
+import org.openqa.selenium.support.PageFactory;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+
+import qa.yblapp.base.Base;
+
+public class CbReportPage extends Base {
+
+	public CbReportPage() {
+		super();
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	}
+}

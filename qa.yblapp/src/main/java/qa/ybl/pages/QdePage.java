@@ -1,6 +1,7 @@
 package qa.ybl.pages;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -610,7 +611,8 @@ public class QdePage extends Base{
 		wait = new WebDriverWait(driver,Duration.ofMillis(1000));
 		try {
 			submit.click();
-			wait.until(ExpectedConditions.visibilityOf(errorMessage));
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//			wait.until(ExpectedConditions.visibilityOf(errorMessage));
 			if(errorMessage.isDisplayed()) {
 				result = errorMessage.getText();
 			}else if(popUpMessage.isDisplayed()) {

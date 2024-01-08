@@ -20,13 +20,7 @@
     <fullyQualifiedTypeName name="org.testng.annotations.BeforeMethod"/>
     <fullyQualifiedTypeName name="io.appium.java_client.pagefactory.AppiumElementLocatorFactory"/>
     <fullyQualifiedTypeName name="io.appium.java_client.android.AndroidDriver"/>
-    <fullyQualifiedTypeName name="qa.yblapp.base.Base"/>
     <fullyQualifiedTypeName name="qa.yblapp.logging.Logging"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.support.PageFactory"/>
-    <fullyQualifiedTypeName name="io.appium.java_client.pagefactory.AppiumFieldDecorator"/>
-    <fullyQualifiedTypeName name="qa.ybl.pages.QdePage"/>
-    <fullyQualifiedTypeName name="io.appium.java_client.pagefactory.AndroidFindBy"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.Select"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
     <fullyQualifiedTypeName name="qa.ybl.global.Global"/>
@@ -34,4 +28,11 @@
     <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.WebDriverWait"/>
     <fullyQualifiedTypeName name="java.time.Duration"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.support.ui.ExpectedConditions"/>
+    <fullyQualifiedTypeName name="qa.ybl.pages.QdePage"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+    <fullyQualifiedTypeName name="qa.yblapp.base.Base"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.support.PageFactory"/>
+    <fullyQualifiedTypeName name="io.appium.java_client.pagefactory.AppiumFieldDecorator"/>
+    <fullyQualifiedTypeName name="io.appium.java_client.pagefactory.AndroidFindBy"/>
+    <fullyQualifiedTypeName name="org.openqa.selenium.WebElement"/>
 </qualifiedTypeNameHistroy>

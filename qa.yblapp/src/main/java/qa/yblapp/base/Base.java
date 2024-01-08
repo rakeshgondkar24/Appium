@@ -28,12 +28,15 @@ public class Base {
 	
 	public Base() {
 		log = new Logging();
+		log.Loginfo("Getting into Base Constructor");
 		try {
+			log.Loginfo("Loading Property File");
 			 prop = new Properties();
 			String File = "E:\\Rakesh\\Automation\\New folder\\Automation\\YBL\\Practice\\20102\\qa.yblapp\\src\\main\\java\\qa\\yblapp\\config\\config.properties";
 			FileInputStream file = new FileInputStream(File);
 			try {
 				prop.load(file);
+				log.Loginfo("Loaded the Property File");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				log.Logerror("Base.Base().FileInputStream.prop.load(file)"+"\n"+e);

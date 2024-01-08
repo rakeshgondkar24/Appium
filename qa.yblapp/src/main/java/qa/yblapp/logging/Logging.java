@@ -11,7 +11,7 @@ import qa.yblapp.base.*;
 public class Logging extends Base{
 	
 	static org.apache.log4j.Logger log;
-	public static String name = prop.getProperty("testername");
+//	public static String name = prop.getProperty("testername");
 	
 	public Logging() {
 		try {
@@ -28,12 +28,12 @@ public class Logging extends Base{
 	}
 
 	public void Loginfo(String info) {
-		log = Logger.getLogger("ScriptExecutor: "+name);
+		log = Logger.getLogger("Tester");
 		log.debug(info);
 	}
 	
 	public void Logerror(String error) {
-		Logger log = Logger.getLogger("ScriptExecutor: "+name);
+		Logger log = Logger.getLogger("Tester");
 		log.error(error);
 	}
 }
